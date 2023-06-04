@@ -1,0 +1,64 @@
+.filterContainer {
+  position: absolute;
+  left: -24px; /* Ajusta el valor según la posición deseada */
+  top: 10px; /* Ajusta el valor según la posición deseada */
+  padding: 0px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filterSelect {
+  width: 250px; /* Ajusta el valor según el ancho deseado */
+  font-family: inherit;
+  font-weight: 700;
+  background-color: #ffffff;
+  color: #808ba8;
+  height: 50px; /* Ajusta el valor según la altura deseada */
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px; /* Ajusta el valor según el relleno deseado */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.selectOrder {
+  width: 200px; /* Ajusta el valor según el ancho deseado */
+}
+
+@media (min-width: 768px) {
+  .filter {
+    flex-wrap: nowrap;
+  }
+
+  .filterColumn {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+}
+
+.buttonsContainer {
+  text-align: center;
+}
+
+.button {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px; /* Agrega un margen superior de 10px */
+}
+
+
+.button:hover {
+  background-color: #d32f2f;
+}
+

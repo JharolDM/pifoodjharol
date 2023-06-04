@@ -1,0 +1,104 @@
+.mainCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-gap: 40px;
+    padding-left: 2em;
+    justify-content: center;
+    align-items: center;
+
+
+  }
+  
+  .cardDetails {
+    display: flex;
+    background-color: rgba(13, 116, 119, 0.896);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width:auto;
+    height:auto;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: rgb(19, 133, 91);
+    box-shadow: 1rem 1rem 1rem rgb(38, 97, 36);
+  } 
+  
+  .article {
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    margin-top: 5px;
+    padding: 3px;
+    font-size: smaller;
+   
+}
+   .cardSteps {
+    display: flex;
+    background-color: rgba(13, 116, 119, 0.896);
+    justify-content:left;
+    align-items: center;
+    flex-direction: column;
+    width:500px;
+    height:auto;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: rgb(19, 133, 91);
+    box-shadow: 1rem 1rem 1rem rgb(58, 107, 49);
+  }
+  .stepCard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    background-color:rgba(255, 255, 255, 0.3);
+    justify-content: left;
+    position:relative;
+    border-radius: 20px;
+    border-style:solid;
+    border-color: rgb(19, 133, 91);
+    box-shadow: 2px 2px 2px 2px rgb(29, 105, 41);
+  }
+  .steps {
+    display: flex;
+  }
+
+  .image {
+    height: 340px;
+    width:480px;
+  }
+  .footer {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+  .Pagination {
+    display:flex;
+    justify-content: center;
+    margin-top: 3em;
+  }
+  
+  .PageIndicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-right: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .PageIndicator.Active {
+    background-color: #888;
+    width: 12px;
+    height: 12px;
+  }

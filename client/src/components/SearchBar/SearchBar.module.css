@@ -1,0 +1,31 @@
+.searchBarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .searchInput {
+    width: 200px; /* Ajusta el valor según el ancho deseado */
+    height: 18px; /* Ajusta el valor según la altura deseada */
+    padding: 8px 12px; /* Ajusta el valor según el relleno deseado */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px; /* Ajusta el valor según el espacio deseado entre el input y el botón */
+  }
+  
+  .searchButton {
+    padding: 8px 16px; /* Ajusta el valor según el relleno deseado */
+    font-size: 16px;
+    background-color: #007bff; /* Ajusta el color de fondo deseado */
+    color: #fff; /* Ajusta el color del texto deseado */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .searchButton:hover {
+    background-color: #0056b3; /* Ajusta el color de fondo deseado al pasar el cursor sobre el botón */
+  }
+  
