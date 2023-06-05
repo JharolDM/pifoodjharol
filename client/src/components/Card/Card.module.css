@@ -6,7 +6,7 @@
 .container{
     background-color:rgb(19, 133, 91);
     display:flex;
-    align-items:left;
+    align-items:center;
     justify-content: left;
     position:relative;
     flex-direction: column;
@@ -21,11 +21,12 @@
   
 }
 .container:hover {
-    transform: translateY(-1rem);
+    transform: scale(1.1);
+    z-index: 1;
 }
 
 .container:hover~.container {
-    transform: translateX(130px);
+    transform: translateX(80px);
 }
 
 

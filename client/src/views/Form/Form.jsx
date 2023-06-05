@@ -65,25 +65,24 @@ const Form = () => {
     setErrors(newErrors);
   };
 
-  // Manejador de cambios de las opciones de dieta
-  const handleDietsChange = (event) => {
-    const { value, checked } = event.target;
-  
-    if (checked) {
-      setForm((prevForm) => ({
-        ...prevForm,
-        diets: [...prevForm.diets, value],
-      }));
-    } else {
-      setForm((prevForm) => ({
-        ...prevForm,
-        diets: prevForm.diets.filter((diet) => diet !== value),
-      }));
-    }
-  
-    const newErrors = validate({ ...form, diets: form.diets });
-    setErrors(newErrors);
-  };
+ // Manejador de cambios de las opciones de dieta
+const handleDietsChange = (event) => {
+  const { value, checked } = event.target;
+  const prevForm = { ...form };
+
+  if (checked) {
+    prevForm.diets = [...prevForm.diets, value];
+  } else {
+    prevForm.diets = prevForm.diets.filter((diet) => diet !== value);
+  }
+
+  setForm(prevForm);
+
+  const newErrors = validate(prevForm);
+  setErrors(newErrors);
+};
+
+
 
   // Manejador de cambios del número de pasos en las instrucciones
   const handleStepsChange = (event) => {
@@ -118,6 +117,7 @@ const Form = () => {
   // Manejador del envío del formulario
   const submitHandler = (event) => {
     event.preventDefault();
+    
 
     // Creación de las instrucciones analizadas para enviar al backend
     const analyzedInstructions = [
@@ -206,24 +206,6 @@ const Form = () => {
               {errors.healthScore && <span> {errors.healthScore}</span>}
             </div>
             
-            {/* Opciones de dieta */}
-            <div className={style.dietsBoxes}>
-              <label htmlFor="">Diets: </label>
-              {allDiets.map((option) => (
-                <div key={option}>
-                  <label>
-                    <input
-                      type="checkbox"
-                      value={option}
-                      checked={form.diets.includes(option)}
-                      onChange={handleDietsChange}
-                    />
-                    {option}
-                  </label>
-                </div>
-              ))}
-              {errors.diets && <span> {errors.diets}</span>}
-            </div>
             
             {/* Campo de entrada para el número de pasos */}
             <div>
@@ -256,6 +238,24 @@ const Form = () => {
                 />
               </div>
             ))}
+            {/* Opciones de dieta */}
+            <div className={style.dietsBoxes}>
+              <label htmlFor="">Diets: </label>
+              {allDiets.map((option) => (
+                <div key={option}>
+                  <label>
+                    <input
+                      type="checkbox"
+                      value={option}
+                      checked={form.diets.includes(option)}
+                      onChange={handleDietsChange}
+                    />
+                    {option}
+                  </label>
+                </div>
+              ))}
+              {errors.diets && <span> {errors.diets}</span>}
+            </div>
             
             {/* Botón de envío */}
             <button type="submit" disabled={Object.values(errors).some((error) => error !== "" || Object.values(form).some(value => value === ""))}>

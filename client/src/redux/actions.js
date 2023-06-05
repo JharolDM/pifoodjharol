@@ -13,7 +13,7 @@ export const SORT_HS_DES = "SORT_HS_DES";
 export const FILTER_SOURCE = "FILTER_SOURCE";
 export const FILTER_DIETS = "FILTER_DIETS";
 export const FILTER_BY_DIETS= "FILTER_BY_DIETS";
-export const SET_ERROR = "SET_ERROR";
+// export const SET_ERROR = "SET_ERROR";
 export const FILTER_SOURCE_API= "FILTER_SOURCE_API";
 export const FILTER_SOURCE_CREATE= "FILTER_SOURCE_CREATE";
 export const RESET_FILTERS= "RESET_FILTERS";
@@ -102,20 +102,17 @@ export const filterSourceCreate = () => {
   return { type: FILTER_SOURCE_CREATE };
 };
 
-
-
-
 export function filterByDiets(payload){ // Va a filtrar por "all, gluten free, ketogenic...". REVISAR
   return{
       type:FILTER_BY_DIETS,
       payload
       }
 }
-export const setError = () => {
-  return {
-    type: SET_ERROR
-  };
-};
+// export const setError = () => {
+//   return {
+//     type: SET_ERROR
+//   };
+// };
 
 export const resetFilters = () => {
   return {

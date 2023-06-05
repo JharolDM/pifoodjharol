@@ -86,12 +86,12 @@ const rootReducer = (state = initialState, action, payload) => {
         };
       }
       return { ...state, recipes: filteredByDiets, error: null };
-    case SET_ERROR:
-      return {
-        ...state,
-        recipes: state.allRecipes, // Restablecer las recetas sin filtrar
-        error: "No se encontraron recetas para las dietas seleccionadas",
-      };
+    // case SET_ERROR:
+    //   return {
+    //     ...state,
+    //     recipes: state.allRecipes, // Restablecer las recetas sin filtrar
+    //     error: "No se encontraron recetas para las dietas seleccionadas",
+    //   };
     case RESET_FILTERS:
       return {
         ...state,

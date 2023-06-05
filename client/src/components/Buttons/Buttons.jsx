@@ -69,9 +69,9 @@ const Buttons = ({
   };
 
   return (
-    <div className={style.filterContainer}>
+    <div className={`${style.filterContainer} ${style.greenShadow}`}>
       <form>
-        <div className={style.filterColumn}>
+        <div className={`${style.filterColumn} ${style.filterItem}`}>
           <label>Sort A-Z:</label>
           <select className={style.filterSelect} onChange={handleSortAZChange}>
             <option value="">Select</option>
@@ -79,7 +79,7 @@ const Buttons = ({
             <option value="des">Z-A Descending</option>
           </select>
         </div>
-        <div className={style.filterColumn}>
+        <div className={`${style.filterColumn} ${style.filterItem}`}>
           <label>Sort by Health Score:</label>
           <select className={style.filterSelect} onChange={handleSortHSChange}>
             <option value="">Select</option>
@@ -87,7 +87,7 @@ const Buttons = ({
             <option value="des">0-100 Ascending</option>
           </select>
         </div>
-        <div className={style.filterColumn}>
+        <div className={`${style.filterColumn} ${style.filterItem}`}>
           <label>Filter By Source:</label>
           <select className={style.filterSelect} onChange={(e) => handleSourceChange(e.target.value)}>
             <option value="none">All Recipes</option>
@@ -95,7 +95,7 @@ const Buttons = ({
             <option value="Database">Database Recipes</option>
           </select>
         </div>
-        <div className={style.filterColumn}>
+        <div className={`${style.filterColumn} ${style.filterItem}`}>
           <label>Filter By Diet:</label>
           <select className={style.filterSelect} onChange={handleDietChange}>
             <option value="">All Diets</option>

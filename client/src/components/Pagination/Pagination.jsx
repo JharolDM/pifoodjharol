@@ -1,6 +1,19 @@
+import React from "react";
 import style from "./Pagination.module.css";
 
 const Pagination = ({ totalPages, currentPage, onPageChange }) => {
+  const handlePrevPage = () => {
+    if (currentPage > 0) {
+      onPageChange(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages - 1) {
+      onPageChange(currentPage + 1);
+    }
+  };
+
   const renderPageIndicators = () => {
     const indicators = [];
 
@@ -23,7 +36,25 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
     return indicators;
   };
 
-  return <div className={style.Pagination}>{renderPageIndicators()}</div>;
+  return (
+    <div className={style.Pagination}>
+      <button
+        className={style.PrevButton}
+        onClick={handlePrevPage}
+        disabled={currentPage === 0}
+      >
+        Prev
+      </button>
+      <div className={style.PageIndicators}>{renderPageIndicators()}</div>
+      <button
+        className={style.NextButton}
+        onClick={handleNextPage}
+        disabled={currentPage === totalPages - 1}
+      >
+        Next
+      </button>
+    </div>
+  );
 };
 
 export default Pagination;

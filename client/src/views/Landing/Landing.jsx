@@ -4,11 +4,11 @@ import styles from './Landing.module.css';
 const Landing = () => {
   return (
     <div className={styles.landing}>
-      <div>
-      <h1 className={styles.title}>foods API project</h1>
-      <Link to="/home">
-        <button className={styles.button}> Home </button>
-      </Link>
+      <div className={styles.content}>
+        <h1 className={styles.title}>Foods API Project</h1>
+        <Link to="/home">
+          <button className={styles.button}>Home</button>
+        </Link>
       </div>
     </div>
   );

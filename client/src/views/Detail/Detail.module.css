@@ -27,7 +27,7 @@
     border-radius: 20px;
     border-style: solid;
     border-color: rgb(19, 133, 91);
-    box-shadow: 1rem 1rem 1rem rgb(38, 97, 36);
+    box-shadow: 1rem 1rem 1rem rgb(76, 107, 75);
   } 
   
   .article {
@@ -52,7 +52,7 @@
     border-radius: 20px;
     border-style: solid;
     border-color: rgb(19, 133, 91);
-    box-shadow: 1rem 1rem 1rem rgb(58, 107, 49);
+    box-shadow: 1rem 1rem 1rem rgb(82, 113, 76);
   }
   .stepCard {
     display: grid;
@@ -63,7 +63,7 @@
     border-radius: 20px;
     border-style:solid;
     border-color: rgb(19, 133, 91);
-    box-shadow: 2px 2px 2px 2px rgb(29, 105, 41);
+    box-shadow: 2px 2px 2px 2px rgb(72, 111, 78);
   }
   .steps {
     display: flex;

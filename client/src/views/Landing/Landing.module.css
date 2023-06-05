@@ -1,46 +1,50 @@
 .landing {
-    background-color: rgba(13, 116, 119, 0.896);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  .title {
-    color: rgb(211, 117, 107);
-    font-size: 5rem;
-    margin-bottom: 2rem;
-    font-family: 'text1';
-  }
-  
-  .button {
-    background-color: rgb(255, 195, 161);
-    color: rgb(100, 59, 59);
-    padding: .3em .3em .3em .3em;
-    
-    font-size: 4rem;
-    border: none;
-    border-radius: 90px 2px 90px 0px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-family: 'text1';
-  }
-  
-  .button:hover {
-    background-color: rgb(100, 59, 59);
-    color: white;
-    transform: scale(1.3);
-    margin-left: -5px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(52, 66, 62, 0.834);
+}
 
-  @font-face {
-    font-family: 'text1';
-    src: url('../../resources/fonts/font1.ttf');
-  }
-  
-  @font-face {
-    font-family: 'text2';
-    src: url('../../resources/fonts/shoppinglist.TTF');
-  }
-  
+.content {
+  text-align: center;
+}
+
+.title {
+  color: rgb(19, 133, 91);
+  font-size: 5rem;
+  margin-bottom: 2rem;
+  font-family: 'text1';
+}
+
+.button {
+  background-color: rgb(19, 133, 91);
+  color: rgb(255, 255, 255);
+  padding: 0.8em 1.5em;
+  font-size: 2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'text1';
+  box-shadow: 0 0 10px rgb(59, 101, 68);
+}
+
+.button:hover {
+  background-color: rgb(59, 101, 68);
+  transform: scale(1.1);
+}
+
+@font-face {
+  font-family: 'text1';
+  src: url('../../resources/fonts/font1.ttf');
+}
+
+@font-face {
+  font-family: 'text2';
+  src: url('../../resources/fonts/shoppinglist.TTF');
+}

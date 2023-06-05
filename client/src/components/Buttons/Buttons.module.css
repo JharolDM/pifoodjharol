@@ -7,12 +7,21 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* .greenShadow {
+  box-shadow: 0 0 15px rgba(19, 133, 91, 0.5); /* Cambia el color y la opacidad según tus preferencias */
+
+
 .filter {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
 }
+
+.filterItem {
+  position: relative;
+}
+
 
 .filterSelect {
   width: 250px; /* Ajusta el valor según el ancho deseado */
