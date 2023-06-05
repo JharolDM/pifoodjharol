@@ -1,5 +1,3 @@
-// reducer.js
-
 import {
   GET_DIETS,
   GET_RECIPE,
@@ -10,22 +8,22 @@ import {
   SORT_HS_ASC,
   SORT_HS_DES,
   FILTER_SOURCE,
-  SET_ERROR,
   FILTER_BY_DIETS,
   FILTER_SOURCE_CREATE,
   FILTER_SOURCE_API,
-  RESET_FILTERS
+  RESET_FILTERS,
+  DELETE_RECIPE
 } from "./actions";
 
 const initialState = {
   recipes: [],
   recipe: [],
   diets: [],
-  allRecipes: [], // Agregado un nuevo estado para almacenar una copia de todas las recetas
-  filters: {} // Agregado un nuevo estado para almacenar los filtros
+  allRecipes: [],
+  filters: {}
 };
 
-const rootReducer = (state = initialState, action, payload) => {
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_DIETS:
       return { ...state, diets: action.payload };
@@ -35,7 +33,7 @@ const rootReducer = (state = initialState, action, payload) => {
       return {
         ...state,
         recipes: action.payload,
-        allRecipes: action.payload, // Almacena todas las recetas sin filtrar
+        allRecipes: action.payload,
       };
     case FIND_RECIPES:
       return { ...state, recipes: action.payload };
@@ -86,17 +84,23 @@ const rootReducer = (state = initialState, action, payload) => {
         };
       }
       return { ...state, recipes: filteredByDiets, error: null };
-    // case SET_ERROR:
-    //   return {
-    //     ...state,
-    //     recipes: state.allRecipes, // Restablecer las recetas sin filtrar
-    //     error: "No se encontraron recetas para las dietas seleccionadas",
-    //   };
+    case DELETE_RECIPE:
+      const updatedRecipes = state.recipes.filter((recipe) => {
+        if (typeof recipe.id === "string") {
+          return recipe.id !== action.payload;
+        }
+        return true;
+      });
+      return {
+        ...state,
+        recipes: updatedRecipes,
+        allRecipes: updatedRecipes
+      };
     case RESET_FILTERS:
       return {
         ...state,
-        recipes: state.allRecipes, // Restablecer las recetas sin filtrar
-        filters: {}, // Restablecer los filtros
+        recipes: state.allRecipes,
+        filters: {},
       };
     default:
       return state;

@@ -15,7 +15,6 @@ const CardsContainer = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [reset, setReset] = useState(false);
 
-
   useEffect(() => {
     setCurrentPage(0);
     setReset(false);
@@ -23,10 +22,6 @@ const CardsContainer = () => {
 
   const handlePageChange = (pageIndex) => {
     setCurrentPage(pageIndex);
-  };
-
-  const handleFilterChange = () => {
-    setCurrentPage(0);
   };
 
   const renderCards = () => {

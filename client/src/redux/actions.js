@@ -13,10 +13,11 @@ export const SORT_HS_DES = "SORT_HS_DES";
 export const FILTER_SOURCE = "FILTER_SOURCE";
 export const FILTER_DIETS = "FILTER_DIETS";
 export const FILTER_BY_DIETS= "FILTER_BY_DIETS";
-// export const SET_ERROR = "SET_ERROR";
 export const FILTER_SOURCE_API= "FILTER_SOURCE_API";
 export const FILTER_SOURCE_CREATE= "FILTER_SOURCE_CREATE";
 export const RESET_FILTERS= "RESET_FILTERS";
+export const DELETE_RECIPE = "DELETE_RECIPE";
+
 
 
 export const getDiets = () => {
@@ -108,17 +109,28 @@ export function filterByDiets(payload){ // Va a filtrar por "all, gluten free, k
       payload
       }
 }
-// export const setError = () => {
-//   return {
-//     type: SET_ERROR
-//   };
-// };
 
 export const resetFilters = () => {
   return {
     type: RESET_FILTERS,
   };
 };
+
+export const deleteRecipe = (id) => {
+  return async function (dispatch) {
+    try {
+      // Envía una solicitud DELETE al servidor para eliminar la receta
+      await axios.delete(`http://localhost:3001/recipes/${id}`);
+      
+      // Despacha la acción para indicar que la receta ha sido eliminada con éxito
+      dispatch({ type: DELETE_RECIPE, payload: id });
+    } catch (error) {
+      console.log(error.response.data);
+      alert(error.response.data.message);
+    }
+  };
+};
+
 
 
 
