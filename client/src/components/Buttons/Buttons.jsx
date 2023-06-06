@@ -34,6 +34,7 @@ const Buttons = ({
     dispatch(getDiets());
   }, [dispatch]);
 
+  // Maneja el cambio de ordenación A-Z
   const handleSortAZChange = (e) => {
     const value = e.target.value;
     if (value === "asc") {
@@ -43,6 +44,7 @@ const Buttons = ({
     }
   };
 
+  // Maneja el cambio de ordenación por puntuación de salud
   const handleSortHSChange = (e) => {
     const value = e.target.value;
     if (value === "asc") {
@@ -52,6 +54,7 @@ const Buttons = ({
     }
   };
 
+  // Maneja el cambio de fuente (API o Database)
   const handleSourceChange = (creator) => {
     if (creator === "API") {
       dispatch(filterSourceApi());
@@ -63,6 +66,7 @@ const Buttons = ({
     }
   };
 
+  // Maneja el cambio de dieta
   const handleDietChange = (e) => {
     const value = e.target.value;
     filterByDiets(value === "" ? "all" : value);
@@ -107,10 +111,10 @@ const Buttons = ({
           </select>
         </div>
         <div className={style.buttonsContainer}>
-      <button className={style.button} onClick={handleReset}>
-        Reset Filters
-      </button>
-    </div>
+          <button className={style.button} onClick={handleReset}>
+            Reset Filters
+          </button>
+        </div>
       </form>
     </div>
   );

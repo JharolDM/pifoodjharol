@@ -12,6 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!loaded) {
+      // Si las recetas aún no se han cargado, se llama a la acción "getRecipes" para obtener las recetas del servidor
       dispatch(getRecipes())
         .then(() => {
           setLoading(false);
@@ -26,7 +27,11 @@ const Home = () => {
   }, [dispatch, loaded]);
 
   return (
-    <>{loading || recipes.length === 0 ? <Loader /> : <CardsContainer />}</>
+    // Si el estado de carga es verdadero o no hay recetas disponibles, se muestra el componente "Loader" (indicador de carga)
+    // De lo contrario, se muestra el componente "CardsContainer" que contiene las tarjetas de receta
+    <>
+      {loading || recipes.length === 0 ? <Loader /> : <CardsContainer />}
+    </>
   );
 };
 

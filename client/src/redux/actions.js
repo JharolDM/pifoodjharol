@@ -110,13 +110,13 @@ export function filterByDiets(payload){ // Va a filtrar por "all, gluten free, k
       }
 }
 
-export const resetFilters = () => {
+export const resetFilters = () => { // resetea los filtros y actualiza la pagina
   return {
     type: RESET_FILTERS,
   };
 };
 
-export const deleteRecipe = (id) => {
+export const deleteRecipe = (id) => { // borra una receta siempre y cuando sea de la base de datos
   return async function (dispatch) {
     try {
       // Envía una solicitud DELETE al servidor para eliminar la receta
