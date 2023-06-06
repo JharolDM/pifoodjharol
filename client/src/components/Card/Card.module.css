@@ -36,7 +36,7 @@
 
 .img {
     border-radius: 300px 300px 300px 300px;
-    box-shadow: -1rem 0 3rem rgb(13, 116, 119);
+    box-shadow: -1rem 0 3rem rgba(75, 119, 85, 0.486);
     height: 116px;
     width:156px;
     margin: 5px;

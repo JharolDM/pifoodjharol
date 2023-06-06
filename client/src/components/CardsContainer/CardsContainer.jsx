@@ -43,7 +43,7 @@ const CardsContainer = () => {
             />
           ))}
         </div>
-        <div className={style.Space} /> {/* Espacio vertical */}
+        <div className={style.Space} />
         <div className={style.CardGroup}>
           {currentRecipes.slice(5, 9).map((recipe) => (
             <Card
