@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
   opacity: 0;
@@ -9,10 +9,10 @@
 
 .title {
   font-size: 32px;
-  color: #333;
+  color: #ffffff;
   text-align: center;
   padding: 20px;
-  background-color: #fff;
+  background-color: #45724bda;
   border-radius: 5px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   transform: translateY(50px);
@@ -25,4 +25,14 @@
 
 .visible .title {
   transform: translateY(0);
+}
+
+.image-overlay {
+  margin-top: 50px;
+}
+
+.image-overlay img {
+  width: 900px; /* Ajusta el tamaño de la imagen según tus necesidades */
+  border: 3px solid #398139b7;
+  border-radius: 5px;
 }

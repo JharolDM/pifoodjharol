@@ -181,7 +181,7 @@ const handleDietsChange = (event) => {
             
             {/* Campo de entrada para el resumen */}
             <div>
-              <label htmlFor="summary">Summary: </label>
+              <label htmlFor="summary">Description: </label>
               <input
                 type="text"
                 id="summary"
@@ -210,7 +210,7 @@ const handleDietsChange = (event) => {
             
             {/* Campo de entrada para el número de pasos */}
             <div>
-              <label htmlFor="steps">Steps: </label>
+              <label htmlFor="steps">Steps For Recipe: </label>
               <input
                 type="number"
                 id="steps"

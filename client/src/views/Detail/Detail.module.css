@@ -18,7 +18,7 @@
   
   .cardDetails {
     display: flex;
-    background-color: rgba(13, 116, 119, 0.896);
+    background-color: rgba(34, 43, 35, 0.896);
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -43,7 +43,7 @@
 }
    .cardSteps {
     display: flex;
-    background-color: rgba(13, 116, 119, 0.896);
+    background-color: rgba(34, 43, 35, 0.896);
     justify-content:left;
     align-items: center;
     flex-direction: column;
@@ -52,12 +52,12 @@
     border-radius: 20px;
     border-style: solid;
     border-color: rgb(19, 133, 91);
-    box-shadow: 1rem 1rem 1rem rgb(82, 113, 76);
+    box-shadow: 1rem 1rem 1rem rgb(70, 100, 64);
   }
   .stepCard {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
-    background-color:rgba(255, 255, 255, 0.3);
+    background-color:rgba(255, 255, 255, 0.237);
     justify-content: left;
     position:relative;
     border-radius: 20px;
@@ -117,4 +117,7 @@
   
   .button:hover {
     background-color: #d32f2f;
+  }
+  h2{
+    color: rgb(200, 199, 199);
   }

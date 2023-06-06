@@ -7,16 +7,38 @@
 
 .formContainer {
   display: flex;
-  background-color: rgba(52, 66, 66, 0.896);
+  background-color: rgba(12, 13, 13, 0.896);
   justify-content: left;
   align-items: center;
   flex-direction: column;
   width: auto;
   height: auto;
   border-radius: 20px;
-  border: 2px solid rgb(19, 133, 91);
-  box-shadow: 1rem 1rem 1rem rgb(100, 59, 59);
+  border: 2px solid rgb(12, 200, 131);
+  box-shadow: 1rem 1rem 1rem rgba(42, 79, 46, 0.637);
   padding: 1em;
+}
+
+.formContainer h3 {
+  color: #ffffff; /* Cambia el color a rojo */
+}
+
+.formContainer label {
+  color: rgb(67, 230, 170);
+}
+
+.formContainer input {
+  color: #0000ff;
+}
+
+.formContainer span {
+  color: #ff0000;
+}
+
+.formContainer input {
+  /* Estilos para los elementos input */
+  color: rgb(255, 255, 255); /* Cambia el color del texto */
+  background-color: rgba(12, 13, 13, 0.896); /* Cambia el color de fondo */
 }
 
 .dietsBoxes {
@@ -27,7 +49,7 @@
   margin-left: 5px;
   grid-template-columns: repeat(2, 1fr);
   padding: 0.5em;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(25, 28, 28, 0.074);
   border-radius: 3px;
   margin: 6px;
 }
