@@ -11,8 +11,8 @@ export const validate = (form) => {
   // Validación del campo "title"
   if (!form.title) {
     newErrors.title = "Title cannot be empty";
-  } else if (form.title.length > 150) {
-    newErrors.title = "Title cannot exceed 150 characters";
+  } else if (form.title.length > 40) {
+    newErrors.title = "Title cannot exceed 40 characters";
   }
 
   // Validación del campo "image"
