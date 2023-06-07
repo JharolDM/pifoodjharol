@@ -116,20 +116,110 @@ export const resetFilters = () => { // resetea los filtros y actualiza la pagina
   };
 };
 
-export const deleteRecipe = (id) => { // borra una receta siempre y cuando sea de la base de datos
+export const deleteRecipe = (id) => {
   return async function (dispatch) {
     try {
-      // Envía una solicitud DELETE al servidor para eliminar la receta
-      await axios.delete(`http://localhost:3001/recipes/${id}`);
-      
+      const response = await axios.delete(`http://localhost:3001/recipes/${id}`);
+
       // Despacha la acción para indicar que la receta ha sido eliminada con éxito
       dispatch({ type: DELETE_RECIPE, payload: id });
+
+      // Mostrar el mensaje de éxito proveniente del backend en la alerta
+      alert(response.data.message);
     } catch (error) {
-      console.log(error.response.data);
-      alert(error.response.data.message);
+      if (error.response && error.response.data && error.response.data.error) {
+        // Si hay un error de respuesta del backend, mostrar el mensaje de error en la alerta
+        alert(error.response.data.error);
+      } else {
+        // Si no hay un mensaje de error específico, mostrar un mensaje genérico
+        alert('Error al eliminar la receta.');
+      }
     }
   };
 };
+
+
+
+
+
+
+// export const getDiets = () => {
+//   return async function (dispatch) {
+//     try {
+//       const response = await fetch('http://localhost:3001/diets');
+//       const data = await response.json();
+//       const diets = data.diets;
+//       dispatch({ type: GET_DIETS, payload: diets });
+//     } catch (error) {
+//       console.log(error);
+//       alert('Error al obtener las dietas');
+//     }
+//   };
+// };
+
+// export const getRecipe = (id) => {
+//   return async function (dispatch) {
+//     try {
+//       const response = await fetch(`http://localhost:3001/recipes/${id}`);
+//       const data = await response.json();
+//       const recipe = data;
+//       dispatch({ type: GET_RECIPE, payload: recipe });
+//     } catch (error) {
+//       console.log(error);
+//       alert('Error al obtener la receta');
+//     }
+//   };
+// };
+
+// export const getRecipes = () => {
+//   return async function (dispatch) {
+//     try {
+//       const response = await fetch('http://localhost:3001/recipes');
+//       const data = await response.json();
+//       const recipes = data.map((recipe) => ({
+//         ...recipe,
+//         source: 'API'
+//       }));
+//       dispatch({ type: GET_RECIPES, payload: recipes });
+//     } catch (error) {
+//       console.log(error);
+//       alert('Error al obtener las recetas');
+//     }
+//   };
+// };
+
+// export const findRecipes = (title) => {
+//   return async function (dispatch) {
+//     try {
+//       const response = await fetch(`http://localhost:3001/recipes/?title=${title}`);
+//       const data = await response.json();
+//       const recipes = data;
+//       dispatch({ type: FIND_RECIPES, payload: recipes });
+//     } catch (error) {
+//       console.log(error);
+//       alert('Error al buscar las recetas');
+//     }
+//   };
+// };
+
+// export const deleteRecipe = (id) => {
+//   return async function (dispatch) {
+//     try {
+//       await fetch(`http://localhost:3001/recipes/${id}`, { method: 'DELETE' });
+
+//       // Despacha la acción para indicar que la receta ha sido eliminada con éxito
+//       dispatch({ type: DELETE_RECIPE, payload: id });
+
+//       // Muestra el alert de éxito
+//       alert('¡Receta eliminada exitosamente!');
+//     } catch (error) {
+//       console.log(error);
+//       alert('Error al eliminar la receta');
+//     }
+//   };
+// };
+
+
 
 
 

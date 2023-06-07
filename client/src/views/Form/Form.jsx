@@ -3,10 +3,13 @@ import { useState } from "react";
 import { validate } from "./validator";
 import axios from "axios";
 import style from "./Form.module.css";
+import { useHistory } from 'react-router-dom';
+
 // import { useDispatch, useSelector } from "react-redux";
 // import { getDiets }from "../../redux/actions";
 
 const Form = () => {
+  const history = useHistory();
 
   // const dispatch = useDispatch();
   // const allDiets = useSelector(state => state.diets);
@@ -21,7 +24,6 @@ const Form = () => {
     "dairy free",
     "fodmap friendly",
     "gluten free",
-    // "high protein",
     "ketogenic",
     "lacto ovo vegetarian",
     "paleolithic",
@@ -137,14 +139,17 @@ const handleDietsChange = (event) => {
       ...form,
       analyzedInstructions,
     };
-
     // Envío del formulario al servidor usando axios
     axios
-      .post("http://localhost:3001/recipes", updatedForm)
-      .then((res) => alert(`Success!!\n${res.statusText}\nID:${res.data[0].id}\n${res.data[0].title}`))
-      .catch((error) => alert(`ERROR\nStatus: ${error.response.status}\nMessage: ${error.response.data.error}`));
-  };
-
+    .post("http://localhost:3001/recipes", updatedForm)
+    .then((res) => {
+      alert(`Success!!\n${res.statusText}\nID:${res.data[0].id}\n${res.data[0].title}`);
+      history.push('/home'); // Redireccionar al home después de crear la receta
+    })
+    .catch((error) => {
+      alert(`ERROR\nStatus: ${error.response.status}\nMessage: ${error.response.data.error}`);
+    });
+};
 
   // Renderizado del componente del formulario
   return (

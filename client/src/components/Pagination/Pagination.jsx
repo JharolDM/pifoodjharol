@@ -36,6 +36,14 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
       onPageChange(currentPage + 1); // Llama a la funcion onPageChange con el índice de la página siguiente como parámetro
     }
   };
+  // Manejador para ir a la primera pagina
+  const handleFirstPage = () => {
+    onPageChange(0);
+  };
+  // Manejador para ir a la ultima pagina
+  const handleLastPage = () => {
+    onPageChange(totalPages - 1);
+  };
 
   // Función para renderizar los indicadores de pagina
   const renderPageIndicators = () => {
@@ -52,23 +60,56 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
 
   return (
     <div className={style.Pagination}>
-      <button
-        className={style.PrevButton}
-        onClick={handlePrevPage}
-        disabled={currentPage === 0} // Deshabilita el botón de página anterior en la primera página
-      >
-        Prev
-      </button>
-      <div className={style.PageIndicators}>{renderPageIndicators()}</div> {/* Renderiza los indicadores de página */}
-      <button
-        className={style.NextButton}
-        onClick={handleNextPage}
-        disabled={currentPage === totalPages - 1} // Deshabilita el botón de página siguiente en la última página
-      >
-        Next
-      </button>
-    </div>
-  );
+    <button
+      className={style.PrevButton}
+      onClick={handleFirstPage}
+      disabled={currentPage === 0}
+    >
+      First
+    </button>
+    <button
+      className={style.PrevButton}
+      onClick={handlePrevPage}
+      disabled={currentPage === 0}
+    >
+      Prev
+    </button>
+    <div className={style.PageIndicators}>{renderPageIndicators()}</div>
+    <button
+      className={style.NextButton}
+      onClick={handleNextPage}
+      disabled={currentPage === totalPages - 1}
+    >
+      Next
+    </button>
+    <button
+      className={style.NextButton}
+      onClick={handleLastPage}
+      disabled={currentPage === totalPages - 1}
+    >
+      Last
+    </button>
+  </div>
+);
 };
+
+{/* <div className={style.Pagination}>
+{currentPage !== 0 && (
+  <button className={style.PrevButton} onClick={handlePrevPage}>
+    Prev
+  </button>
+)}
+
+<div className={style.PageIndicators}>{renderPageIndicators()}</div> {/* Renderiza los indicadores de página */}
+
+// {currentPage !== totalPages - 1 && (
+//   <button className={style.NextButton} onClick={handleNextPage}>
+//     Next
+//   </button>
+// )}
+// </div>
+// );
+// } 
+
 
 export default Pagination;

@@ -34,7 +34,7 @@ const Detail = () => {
     if (typeof recipe.id === "string") {
       dispatch(deleteRecipe(recipe.id))
         .then(() => {
-          history.push('/recipes'); // Redireccionar al listado de recetas después de eliminar
+          history.push('/home'); // Redireccionar al listado de recetas después de eliminar
         })
         .catch((error) => {
           console.log(error.response);
