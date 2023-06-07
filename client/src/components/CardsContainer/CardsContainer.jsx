@@ -27,7 +27,11 @@ const CardsContainer = () => {
   const renderCards = () => {
     const startIndex = currentPage * cardsPerPage; // Índice de inicio de las tarjetas en la página actual
     const endIndex = startIndex + cardsPerPage; // Índice de fin de las tarjetas en la página actual
-    const currentRecipes = recipes.slice(startIndex, endIndex); // Obtiene las recetas para la página actual
+    const currentRecipes = Array.isArray(recipes) ? recipes.slice(startIndex, endIndex) : []// Obtiene las recetas para la página actual
+
+    if (currentRecipes.length === 0) {
+      return <p>No recipes were found with the specified search term, please check the name and try again.</p>;
+    }
 
     return (
       <>

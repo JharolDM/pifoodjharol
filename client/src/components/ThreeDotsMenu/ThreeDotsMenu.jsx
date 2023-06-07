@@ -1,6 +1,6 @@
 // Importa el componente "Link" de react-router-dom para crear enlaces de navegación
 import { Link } from 'react-router-dom';
-import styles from './ThreeDotsMenu.module.css'; // Importa los estilos CSS específicos para el componente
+import styles from './ThreeDotsMenu.module.css';
 
 // Define el componente ThreeDotsMenu
 const ThreeDotsMenu = () => {
