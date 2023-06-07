@@ -16,9 +16,8 @@
     border-radius: 20px;
     border-style:solid;
     border-color: rgb(89, 153, 89);
-    box-shadow: 1rem 1rem 1rem rgb(74, 105, 81);
+    box-shadow: 1rem 1rem 1rem rgba(47, 72, 52, 0.8);
     transition: .6s;
-  
 }
 .container:hover {
     transform: scale(1.1);
@@ -61,7 +60,6 @@ color: rgb(222, 221, 221);
     background-color: rgba(114, 172, 128, 0.599);
     border-radius: 20px;
     margin: 5px;
-   
 }
 .dietList {
     display: grid;
@@ -70,5 +68,4 @@ color: rgb(222, 221, 221);
     padding-left: 0;
     margin-left: 5px;
     color:rgb(222, 221, 221);
-  }
-  
+}
