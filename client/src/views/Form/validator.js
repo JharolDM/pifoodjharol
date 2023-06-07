@@ -13,6 +13,10 @@ export const validate = (form) => {
     newErrors.title = "Title cannot be empty";
   } else if (form.title.length > 40) {
     newErrors.title = "Title cannot exceed 40 characters";
+  } else if (/[^\w\s]/.test(form.title)) {
+    newErrors.title = "Title contains invalid characters";
+  } else if (form.title.length < 5) {
+    newErrors.title = "Title must be at least 5 characters long";
   }
 
   // Validación del campo "image"
@@ -20,6 +24,8 @@ export const validate = (form) => {
     newErrors.image = "Image URL cannot be empty";
   } else if (!/^https?:\/\/\S+$/.test(form.image)) {
     newErrors.image = "Invalid image URL";
+  } else if (form.image.length > 300) {
+    newErrors.image = "Image URL cannot exceed 300 characters";
   }
 
   // Validación del campo "summary"
@@ -27,6 +33,10 @@ export const validate = (form) => {
     newErrors.summary = "Summary cannot be empty";
   } else if (form.summary.length > 500) {
     newErrors.summary = "Summary cannot exceed 500 characters";
+  } else if (/<[^>]+>/.test(form.summary)) {
+    newErrors.summary = "Summary cannot contain HTML tags";
+  } else if (form.summary.length < 10) {
+    newErrors.summary = "Summary must be at least 10 characters long";
   }
 
   // Validación del campo "healthScore"
@@ -39,6 +49,8 @@ export const validate = (form) => {
   // Validación del campo "diets"
   if (!form.diets || form.diets.length === 0) {
     newErrors.diets = "Please select at least one diet";
+  } else if (form.diets.length > 6) {
+    newErrors.diets = "Please select a maximum of 6 diets";
   }
 
   // Validación del campo "analyzedInstructions"

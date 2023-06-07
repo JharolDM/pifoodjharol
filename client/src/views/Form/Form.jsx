@@ -54,6 +54,9 @@ const Form = () => {
     analyzedInstructions: ""
   });
 
+  const [stepCount, setStepCount] = useState(0);
+
+
   // Manejador de cambios de los campos de entrada del formulario
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -91,65 +94,114 @@ const handleDietsChange = (event) => {
   const handleStepsChange = (event) => {
     const { value } = event.target;
     const stepsCount = parseInt(value);
-
-    if (!isNaN(stepsCount) && stepsCount >= 0) {
+  
+    if (!isNaN(stepsCount) && stepsCount >= 0 && stepsCount <= 10) {
       const updatedSteps = [];
-
+  
       for (let i = 0; i < stepsCount; i++) {
         updatedSteps.push({ step: "" });
       }
-
+  
       setForm((prevForm) => ({
         ...prevForm,
         analyzedInstructions: updatedSteps
       }));
+      setStepCount(stepsCount);
     }
   };
+  
 
   // Manejador de cambios de un paso en las instrucciones
   const handleStepChange = (index, value) => {
     const updatedSteps = [...form.analyzedInstructions];
     updatedSteps[index] = { step: value };
-
+  
     setForm((prevForm) => ({
       ...prevForm,
       analyzedInstructions: updatedSteps
     }));
+  
+    const newErrors = validate({
+      ...form,
+      analyzedInstructions: updatedSteps
+    });
+    setErrors(newErrors);
   };
+  
 
   // Manejador del envío del formulario
   const submitHandler = (event) => {
     event.preventDefault();
+  
+    // Verificar si hay algún paso vacío
+    const hasEmptyStep = form.analyzedInstructions.some((step) => step.step.trim() === "");
+  
+    if (hasEmptyStep) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        analyzedInstructions: "Please fill in all steps"
+      }));
+      return; // Evita que el formulario se envíe
+    }
+      else {
+      // Creación de las instrucciones analizadas para enviar al backend
+      const analyzedInstructions = [
+        {
+          name: "",
+          steps: form.analyzedInstructions.map((step, index) => ({
+            number: index + 1,
+            step: step.step,
+            ingredients: [],
+            equipment: [],
+          })),
+        },
+      ];
+  
+      const updatedForm = {
+        ...form,
+        analyzedInstructions,
+      };
+  
+      // Envío del formulario al servidor usando axios
+      axios
+        .post("http://localhost:3001/recipes", updatedForm)
+        .then((res) => {
+          alert(`Success!!\n${res.statusText}\nID:${res.data[0].id}\n${res.data[0].title}`);
+          history.push("/home"); // Redireccionar al home después de crear la receta
+        })
+        .catch((error) => {
+          alert(`ERROR\nStatus: ${error.response.status}\nMessage: ${error.response.data.error}`);
+        });
+    }
+  };
+
+//   fetch("http://localhost:3001/recipes", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(updatedForm),
+//   })
+//     .then((res) => {
+//       if (res.ok) {
+//         return res.json();
+//       } else {
+//         throw new Error(
+//           `ERROR\nStatus: ${res.status}\nMessage: ${res.statusText}`
+//         );
+//       }
+//     })
+//     .then((data) => {
+//       alert(`Success!!\nID:${data[0].id}\n${data[0].title}`);
+//       history.push("/home"); // Redireccionar al home después de crear la receta
+//     })
+//     .catch((error) => {
+//       alert(error.message);
+//     });
+// };
+
     
-
-    // Creación de las instrucciones analizadas para enviar al backend
-    const analyzedInstructions = [
-      {
-        name: "",
-        steps: form.analyzedInstructions.map((step, index) => ({
-          number: index + 1,
-          step: step.step,
-          ingredients: [],
-          equipment: [],
-        })),
-      },
-    ];
-
-    const updatedForm = {
-      ...form,
-      analyzedInstructions,
-    };
-    // Envío del formulario al servidor usando axios
-    axios
-    .post("http://localhost:3001/recipes", updatedForm)
-    .then((res) => {
-      alert(`Success!!\n${res.statusText}\nID:${res.data[0].id}\n${res.data[0].title}`);
-      history.push('/home'); // Redireccionar al home después de crear la receta
-    })
-    .catch((error) => {
-      alert(`ERROR\nStatus: ${error.response.status}\nMessage: ${error.response.data.error}`);
-    });
-};
+  
 
   // Renderizado del componente del formulario
   return (
@@ -227,23 +279,22 @@ const handleDietsChange = (event) => {
             </div>
             
             {/* Pasos de las instrucciones */}
-            {errors.analyzedInstructions && (
-              <span> {errors.analyzedInstructions}</span>
-            )}
-            {form.analyzedInstructions.map((step, index) => (
-              <div key={index}>
-                <label htmlFor={`step-${index}`}>Step {index + 1}: </label>
-                <input
-                  type="text"
-                  id={`step-${index}`}
-                  name={`step-${index}`}
-                  value={step.step}
-                  onChange={(event) =>
-                    handleStepChange(index, event.target.value)
-                  }
-                />
-              </div>
-            ))}
+            {errors.analyzedInstructions && <span className={style.error}> {errors.analyzedInstructions}</span>}
+{form.analyzedInstructions.slice(0, stepCount).map((step, index) => (
+  <div key={index}>
+    <label htmlFor={`step-${index}`}>Step {index + 1}: </label>
+    <input
+      type="text"
+      id={`step-${index}`}
+      name={`step-${index}`}
+      value={step.step}
+      onChange={(event) => handleStepChange(index, event.target.value)}
+    />
+    {step.step.trim() === "" && <span className={style.error}>Step cannot be empty</span>}
+  </div>
+))}
+
+
             {/* Opciones de dieta */}
             <div className={style.dietsBoxes}>
               <label htmlFor="">Diets: </label>
@@ -264,7 +315,9 @@ const handleDietsChange = (event) => {
             </div>
             
             {/* Botón de envío */}
-            <button type="submit" disabled={Object.values(errors).some((error) => error !== "" || Object.values(form).some(value => value === ""))}>
+            <button type="submit" disabled={Object.values(errors).some((error) => error !== "") ||
+                Object.values(form).some((value) => value === "") ||
+                form.analyzedInstructions.length === 0 }>
               Submit Recipe
             </button>
           </form>
@@ -273,5 +326,4 @@ const handleDietsChange = (event) => {
     </>
   );
 };
-
 export default Form;
