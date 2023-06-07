@@ -6,7 +6,7 @@
   }
 
   .card {
-    background-color:rgba(52, 66, 66, 0.896);
+    background-color:rgba(12, 13, 13, 0.896);
     padding: 3em;
     display:flex;
     align-items: center;
@@ -17,15 +17,15 @@
     border-radius: 20px;
     border-style:solid;
     border-color: rgb(19, 133, 91);
-    box-shadow: 1rem 1rem 1rem rgb(100, 59, 59);
+    box-shadow: 1rem 1rem 1rem rgba(59, 100, 65, 0.827);
     
   }
   
   .spinner {
     width: 50px;
     height: 50px;
-    border: 5px solid rgba(0, 0, 0, 0.1);
-    border-left-color: #1a1a1a;
+    border: 5px solid rgba(27, 183, 92, 0.1);
+    border-left-color: #3bb129;
     border-radius: 50%;
     animation: spin 1s infinite linear;
   }

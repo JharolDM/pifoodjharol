@@ -18,7 +18,7 @@
   
   .cardDetails {
     display: flex;
-    background-color: rgba(34, 43, 35, 0.896);
+    background-color: rgba(12, 13, 13, 0.896);
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -34,16 +34,16 @@
     display:flex;
     flex-direction: row;
     align-items:center;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(12, 13, 13, 0.896);
     border-radius: 20px;
     margin-top: 5px;
     padding: 3px;
     font-size: smaller;
-   
+    color: rgb(200, 199, 199);
 }
    .cardSteps {
     display: flex;
-    background-color: rgba(34, 43, 35, 0.896);
+    background-color: rgba(12, 13, 13, 0.896);
     justify-content:left;
     align-items: center;
     flex-direction: column;
@@ -57,7 +57,7 @@
   .stepCard {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
-    background-color:rgba(255, 255, 255, 0.237);
+    background-color:rgba(12, 13, 13, 0.896);;
     justify-content: left;
     position:relative;
     border-radius: 20px;
@@ -119,5 +119,17 @@
     background-color: #d32f2f;
   }
   h2{
+    color: rgb(200, 199, 199);
+  }
+  h3{
+    color: rgb(200, 199, 199);
+  }
+  h4{
+    color: rgb(200, 199, 199);
+  }
+  li{
+    color: rgb(200, 199, 199);
+  }
+  p{
     color: rgb(200, 199, 199);
   }

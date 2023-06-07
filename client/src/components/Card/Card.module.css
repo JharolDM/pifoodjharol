@@ -23,6 +23,7 @@
 .container:hover {
     transform: scale(1.1);
     z-index: 1;
+    background-color: rgb(37, 114, 55);
 }
 
 .container:hover~.container {
