@@ -15,8 +15,8 @@ export const validate = (form) => {
     newErrors.title = "Title cannot exceed 40 characters";
   } else if (/[^\w\s]/.test(form.title)) {
     newErrors.title = "Title contains invalid characters";
-  } else if (form.title.length < 5) {
-    newErrors.title = "Title must be at least 5 characters long";
+  } else if (form.title.length < 2) {
+    newErrors.title = "Title must be at least 2 characters long";
   }
 
   // Validación del campo "image"

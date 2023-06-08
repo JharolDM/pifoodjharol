@@ -17,6 +17,8 @@ const createDiets = async () => {
     });
   });
 
+  uniqueDiets.add('vegetarian');
+
   // Ordenar e insertar dietas en la base de datos
   const sortedDiets = [...uniqueDiets].sort(); // Convertir el conjunto en un arreglo y ordenarlo alfabéticamente
   await Diet.bulkCreate(sortedDiets.map((diet) => ({ diet })), { ignoreDuplicates: true }); // Insertar las dietas en la base de datos, ignorando las duplicadas
