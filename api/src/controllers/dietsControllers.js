@@ -17,7 +17,7 @@ const createDiets = async () => {
     });
   });
 
-  uniqueDiets.add('vegetarian');
+  uniqueDiets.add('vegetarian'); // agrego la dieta vegetarian que piden en el readme
 
   // Ordenar e insertar dietas en la base de datos
   const sortedDiets = [...uniqueDiets].sort(); // Convertir el conjunto en un arreglo y ordenarlo alfabéticamente
